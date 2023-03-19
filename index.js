@@ -64,12 +64,61 @@ inquirer.prompt(
             message: "Github username:",
             name: 'git',
             validate: (value)=>{if (value){return true} else {return 'I need a GitHub username to continue'}}
+        },
+        {
+            type: 'input',
+            message: "E-mail:",
+            name: 'email',
+            validate: (value)=>{if (value){return true} else {return 'I need an Email to continue'}}
         }
     ]
-)
-const questions = {
+).then(({
+    title,
+    description,
+    tOc,
+    installation,
+    usage,
+    license,
+    contribute,
+    test,
+    questions,
+    git,
+    email
+})=>{
+    const template = `# ${title}
+    
+    * [Description] (#description)
+    * [Table of Contents] (#tOc)
+    * [Installation] (#installation)
+    * [Usage] (#usage)
+    * [License] (#license)
+    * [Contribution] (contribution)
+    * [Test] (test)
+    * [Questions] (questions)
+    ## Description
+    ${description}
+    ## Table of Contents
+    ${tOc}
+    ## Installation
+    ${installation}
+    ## Usage
+    ${usage}
+    ## License
+    ${license}
+    ## Contribution
+    ${contribute}
+    ## Test
+    ${test}
+    ## Questions
+    ${questions}
 
-}
+    # Contact
+    * GitHub :${git}
+    * Email :${email}`;
+    
+
+})
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
