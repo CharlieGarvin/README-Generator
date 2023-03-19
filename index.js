@@ -87,14 +87,14 @@ inquirer.prompt(
 })=>{
     const template = `# ${title}
     
-    * [Description] (#description)
-    * [Table of Contents] (#tOc)
-    * [Installation] (#installation)
-    * [Usage] (#usage)
-    * [License] (#license)
-    * [Contribution] (contribution)
-    * [Test] (test)
-    * [Questions] (questions)
+    * [Description](#description)
+    * [Table of Contents](#tOc)
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contribution](contribution)
+    * [Test](test)
+    * [Questions](questions)
     ## Description
     ${description}
     ## Table of Contents
@@ -119,9 +119,8 @@ inquirer.prompt(
     writeToFile(title, template);  
 });
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`,data,(err)=>{
+    fs.writeFile(`./${fileName.toUpperCase().split(' ').join('')}.md`,data,(err)=>{
         if(err){
             console.log(err)
         }
